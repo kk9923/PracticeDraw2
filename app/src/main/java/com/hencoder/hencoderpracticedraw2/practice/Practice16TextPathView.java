@@ -13,6 +13,7 @@ public class Practice16TextPathView extends View {
     Paint pathPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Path textPath = new Path();
     String text = "Hello HenCoder";
+    private Path path;
 
     public Practice16TextPathView(Context context) {
         super(context);
@@ -27,10 +28,11 @@ public class Practice16TextPathView extends View {
     }
 
     {
-        paint.setTextSize(120);
+        paint.setTextSize(80);
 
         // 使用 Paint.getTextPath() 来获取文字的 Path
-
+        path = new Path();
+        paint.getTextPath(text,0,10,50,300,textPath);
         pathPaint.setStyle(Paint.Style.STROKE);
     }
 
@@ -39,7 +41,7 @@ public class Practice16TextPathView extends View {
         super.onDraw(canvas);
 
         canvas.drawText(text, 50, 200, paint);
-
+       // paint.getFillPath()
         canvas.drawPath(textPath, pathPaint);
     }
 }
